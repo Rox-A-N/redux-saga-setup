@@ -8,7 +8,7 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from'redux-saga/effects'; // different kind of put, putting data from saga to the redux (?)
 import axios from 'axios';
-import FirstReducer from './components/Reducers/firstReducer.jsx';
+import firstReducer from './Reducers/firstReducer.js';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -40,7 +40,7 @@ function* fetchElements(){
 }
 
 // move to its own file and then import here:
-<FirstReducer />
+
 
 
 const secondReducer = (state = 100, action) => {
@@ -69,7 +69,7 @@ const storeInstance = createStore(
     // This function is our first reducer
     // reducer is a function that runs every time an action is dispatched
     combineReducers({
-        // firstReducer,
+        firstReducer,
         secondReducer,
         elementListReducer,
     }),
