@@ -9,6 +9,8 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from'redux-saga/effects'; // different kind of put, putting data from saga to the redux (?)
 import axios from 'axios';
 import firstReducer from './Reducers/firstReducer.js';
+import secondReducer from './Reducers/secondReducer.jsx';
+import elementListReducer from './Reducers/elementListReducer.jsx';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -39,28 +41,9 @@ function* fetchElements(){
     }   // try wraps this to say 'on success' do this, otherwise 'on error' console the error
 }
 
-// move to its own file and then import here:
-
-
-
-const secondReducer = (state = 100, action) => {
-    if (action.type === 'BUTTON_TWO') {
-        console.log('secondReducer state', state);
-        console.log('Button 2 was clicked!');
-        return state - 1;
-    }
-    return state;
-};
-
-const elementListReducer = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_ELEMENTS':
-            return action.payload;
-        default:
-            return state;
-    }
-};    
-
+// move reducers: firstReducer, secondReducer,
+//  and elementListReducer to 
+// their own file and then import here:
 
 
 // This is creating the store
